@@ -1,6 +1,6 @@
 const fetch = require("isomorphic-fetch");
 
-const API_KEY = "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"
+const API_KEY = "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"
 
 async function getProjectIdea(userInput) {
     const endpoint = "https://api.openai.com/v1/engines/text-davinci-002/completions"
