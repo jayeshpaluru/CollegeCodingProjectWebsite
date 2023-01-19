@@ -3,20 +3,13 @@ const { value: languageSelect } = document.getElementById("languageSelect");
 const { value: skillSelect } = document.getElementById("skillSelect");
 const submitBtn = document.getElementById("submitBtn");
 const displayProjectIdea = document.getElementById("displayProjectIdea");
-let cache = {};
 
 async function getProjectIdea(language, skill) {
   document.getElementById("loading").style.display = "block"; 
-  const userInput = `Generate a project idea for a ${skill} level ${language} developer.`;
-  if (cache[userInput] && cache[userInput].timestamp > Date.now() - 86400000) {
-    console.log("Response retrieved from cache");
-    document.getElementById("loading").style.display = "none";
-    return cache[userInput].data;
-  }
   console.log("getProjectIdea function called");
   const endpoint = "https://api.openai.com/v1/engines/text-davinci-002/completions";
   const body = {
-    prompt: userInput,
+    prompt: `Generate a project idea for a ${skill} level ${language} developer.`,
     max_tokens: 250,
     stop: "Project completed",
     temperature: 0.75
@@ -36,7 +29,6 @@ async function getProjectIdea(language, skill) {
     const { choices } = await response.json();
     if (choices && choices[0] && choices[0].text) {
       const { text } = choices[0];
-      cache[userInput] = { data: text, timestamp: Date.now() };
       document.getElementById("loading").style.display = "none"; 
       return text;
     } else {
@@ -71,4 +63,3 @@ submitBtn.addEventListener("click", async function() {
     displayProjectIdea.textContent = "Error: " + error.message;
   }
 });
-
