@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Project Idea Generator</title>
+    <style>
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      label {
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+      #displayProjectIdea {
+        margin-top: 10px;
+        text-align: center;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <form>
+        <label for="languageSelect">Select a language:</label>
+        <select id="languageSelect" name="languageSelect">
+          <option value="JavaScript">JavaScript</option>
+          <option value="Python">Python</option>
+          <option value="Java">Java</option>
+          <option value="C++">C++</option>
+        </select>
+        <br>
+        <label for="skillSelect">Select a skill level:</label>
+        <select id="skillSelect" name="skillSelect">
+          <option value="Beginner">Beginner</option>
+          <option value="Intermediate">Intermediate</option>
+          <option value="Advanced">Advanced</option>
+        </select>
+        <br>
+        <br>
+        <input type="button" id="submitBtn" value="Submit">
+      </form>
+      <p id="displayProjectIdea"></p>
+    </div>
+    <script>
+      const API_KEY = "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";
+      const languageSelect = document.getElementById("languageSelect");
+      const skillSelect = document.getElementById("skillSelect");
+      const submitBtn = document.getElementById("submitBtn");
+      const displayProjectIdea = document.getElementById("displayProjectIdea");
+      let cache = {};
+
+      async function getProjectIdea(language, skill) {
+        const userInput = `Generate a project idea for a ${skill} level ${language} developer.`;
+        if (cache[userInput] && cache[userInput].timestamp > Date.now() - 86400000) {
+          console.log("Response retrieved from cache");
+          return cache[userInput].data;
+        }
+        
+        console.log("getProjectIdea function called");
+        const endpoint = "https://api.openai.com/v1/engines/text-davinci-002/completions";
+
+        const body = {
+          prompt: userInput,
+          max_tokens: 250,
+          stop: "Project completed",
+          temperature: 0.75
+        }
+
+        try {
+          const response = await fetch(endpoint, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": `Bearer ${API_KEY}`
+            },
+            body: JSON.stringify(body)
+        });
+          const json = await response.json();
+          if (json.choices && json.choices.length > 0) {
+            cache[userInput] = {
+              data: json.choices[0].text,
+              timestamp: Date.now()
+            };
+            return json.choices[0].text;
+          } else {
+            throw new Error('No project ideas found');
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      }
+
+      async function main() {
+        submitBtn.addEventListener("click", async function() {
+          const language = languageSelect.value;
+          const skill = skillSelect.value;
+          try {
+            const projectIdea = await getProjectIdea(language, skill);
+            console.log(projectIdea);
+            displayProjectIdea.innerHTML = projectIdea;
+          } catch (error) {
+            console.log(error);
+          }
+        });
+      }
+
+      main();
+    </script>
+  </body>
+</html>
