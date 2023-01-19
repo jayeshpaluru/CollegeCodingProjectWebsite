@@ -28,6 +28,16 @@
           <option value="Python">Python</option>
           <option value="Java">Java</option>
           <option value="C++">C++</option>
+          <option value="C">C</option>
+          <option value="C#">C#</option>
+          <option value="JavaScript">JavaScript</option>
+          <option value="Kotlin">Kotlin</option>
+          <option value="Ruby">Ruby</option>
+          <option value="Swift">Swift</option>
+          <option value="Go">Go</option>
+          <option value="Scala">Scala</option>
+          <option value="Rust">Rust</option>
+          <option value="TypeScript">TypeScript</option>
         </select>
         <br>
         <label for="skillSelect">Select a skill level:</label>
@@ -90,15 +100,23 @@
           console.log(error);
         }
       }
-
       async function main() {
         submitBtn.addEventListener("click", async function() {
           const language = languageSelect.value;
           const skill = skillSelect.value;
           try {
-            const projectIdea = await getProjectIdea(language, skill);
-            console.log(projectIdea);
-            displayProjectIdea.innerHTML = projectIdea;
+            const projectIdeas = await getProjectIdea(language, skill);
+            console.log(projectIdeas);
+            displayProjectIdea.innerHTML = ""; // Clear the previous content
+            const list = document.createElement("ul"); // Create a new unordered list element
+            projectIdeas.split("\n").forEach(idea => { // Split the text into lines and create a new list item for each line
+              if (idea) { // Check if the line is not empty
+                const item = document.createElement("li");
+                item.innerHTML = idea;
+                list.appendChild(item);
+              }
+            });
+            displayProjectIdea.appendChild(list);
           } catch (error) {
             console.log(error);
           }
@@ -109,3 +127,4 @@
     </script>
   </body>
 </html>
+
