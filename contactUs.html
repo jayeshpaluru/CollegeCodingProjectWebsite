@@ -1,19 +1,120 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Contact Us</title>
-  </head>
-  <body>
-    <h1>Contact Us</h1>
-    <form id="myform">
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name"><br>
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email"><br>
-      <label for="message">Message:</label>
-      <textarea id="message" name="message"></textarea><br>
-      <input type="submit" value="Submit">
-    </form>
-    <script src = "contactUs.js"></script>
-  </body>
+
+<head>
+    <title>Code Challenge - Contact Us</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Code Challenge</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="home.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="ProjectGenerator.html">Project Generator</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="AboutUs.html">About Us</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <h1 class="text-center">Contact Us</h1>
+                    <p>We'd love to hear from you! If you have any questions or feedback about Code Challenge, please don't hesitate to contact us using the form below or the contact information provided.</p>
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="name" placeholder="Enter your name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" placeholder="Enter your email">
+                        </div>
+                        <div class="form-group">
+                          <label for="message">Message</label>
+                          <textarea class="form-control" id="message" rows="3"></textarea>
+                      </div>
+                      <div class="form-group">
+                          <button type="submit" class="btn btn-primary">Submit</button>
+                      </div>
+                      <div id="error-message" class="alert alert-danger" style="display: none"></div>
+                      </form>
+                      </div>
+                      <aside class="col-md-4">
+                          <h2>Contact Information</h2>
+                          <ul class="list-group">
+                              <li class="list-group-item">Email: info@codechallenge.com</li>
+                              <li class="list-group-item">Phone: 555-555-5555</li>
+                              <li class="list-group-item">Address: 123 Main St, Suite 200, Anytown USA</li>
+                          </ul>
+                          <h2>Follow Us</h2>
+                          <div class="social-icons">
+                              <a href="#"><i class="fab fa-facebook-square"></i></a>
+                              <a href="#"><i class="fab fa-twitter-square"></i></a>
+                              <a href="#"><i class="fab fa-instagram"></i></a>
+                          </div>
+                      </aside>
+                      </div>
+                      </div>
+                      </main>
+                      <footer>
+                          <div class="container">
+                              <div class="row">
+                                  <div class="col-md-12">
+                                      <p class="text-center">Copyright ©2022 Code Challenge</p>
+                                  </div>
+                              </div>
+                          </div>
+                      </footer>
+                      <script>
+                         const form = document.getElementById('contact-form');
+
+// Add event listener for form submission
+form.addEventListener('submit', e => {
+    // Prevent default form behavior
+    e.preventDefault();
+
+    // Get form input elements
+    const name = document.getElementById('name');
+    const email = document.getElementById('email');
+    const message = document.getElementById('message');
+
+    // Validate form input
+    if (name.value === '' || email.value === '' || message.value === '') {
+        // Display error message
+        const errorMessage = document.getElementById('error-message');
+        errorMessage.textContent = 'Please fill out all fields';
+        errorMessage.style.display = 'block';
+    } else {
+        // Open default email client with form information pre-filled
+        const recipient = "info@codechallenge.com";
+        const subject = "Contact Form Submission";
+        const body = `Name: ${name.value}\nEmail: ${email.value}\nMessage: ${message.value}`;
+        const emailLink = `mailto:${recipient}?subject=${subject}&body=${body}`;
+        window.location.href = emailLink;
+    }
+});
+ 
+                        </script>
+</body>
 </html>
+
