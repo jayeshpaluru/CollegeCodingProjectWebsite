@@ -41,8 +41,8 @@ async function getProjectIdea(language, skill) {
 }
 
 submitBtn.addEventListener("click", async function() {
-  const selectedLanguage = languageSelect;
-  const selectedSkill = skillSelect;
+  const selectedLanguage = document.getElementById("languageSelect").value;
+  const selectedSkill = document.getElementById("skillSelect").value;
   try {
     const projectIdeas = await getProjectIdea(selectedLanguage, selectedSkill);
     console.log(projectIdeas);
