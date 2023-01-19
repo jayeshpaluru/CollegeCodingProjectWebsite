@@ -3,58 +3,67 @@
 
 <head>
     <title>Code Challenge</title>
-    <style>
-        body {
-            background-color: #ffffff;
-        }
-
-        #header {
-            background-color: #e3dac9c6;
-        }
-
-        #content {
-            background-color: #e8e4c948;
-        }
-
-        #sidebar {
-            background-color: #e6e0d430;
-        }
-
-        #footer {
-            background-color: #ede6d61c;
-        }
-
-        #navbar {
-            background-color: #e3e0cd00;
-        }
-    </style>
-
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 </head>
 
 <body>
-    <div id="header">
-        <h1 style="text-align:center; margin: 10 auto;">Code Challenge Home Page</h1>
-    </div>
-    <div id="navbar" style="display: flex; justify-content: center; align-items: center; height: 15vh;">
-        <div class="ProjectGenerator" onclick="location.href='projectGenerator.html'" style="width: 75px; height: 30px; background-color: #e3e0cd; margin: 10px; text-align: center; padding: 15px;">Project Generator</div>
-        <div class="AboutUs" onclick="location.href='aboutUs.html'" style="width: 75px; height: 30px; background-color: #e3e0cd; margin: 10px; text-align: center; padding: 15px;">About <br> Us</div>
-        <div class="ContactUs" onclick="location.href='page3.html'" style="width: 75px; height: 30px; background-color: #e3e0cd; margin: 10px; text-align: center; padding: 15px;">Contact <br> Us</div>
-    </div>
-    
-    <div id="content">
-        <p>The app is called "Code Challenge". It is designed to help students improve their coding skills by providing them with coding projects to work on. The app allows students to select a coding language they want to work on, and their proficiency level in that language. Based on their selection, the app generates a list of coding projects that are tailored to their skills and interests. </p>
-        <p>The app has a user-friendly interface that makes it easy for students to navigate and find the coding projects they want to work on. The students can select from a variety of coding languages such as Python, Java, JavaScript, C++, and more. They can also choose from different proficiency levels such as beginner, intermediate, and advanced.</p>
-        <p>The coding projects provided by the app are designed to be challenging but also achievable, and they cover a wide range of topics such as web development, game development, data analysis, and more. Each project includes a detailed description, a list of requirements, and step-by-step instructions to help students understand the problem and complete the project.</p>   
-        <p>The app also includes a built-in code editor that allows students to write and test their code right within the app, and a debugging tool that helps them identify and fix errors in their code.</p>
-        <p>The app also has a feature that allows students to submit their projects to be reviewed by a mentor or a community of peers, and get feedback and tips on how to improve their code.</p>    
-        <p>Overall, Code Challenge is an app that helps students improve their coding skills by providing them with challenging and engaging coding projects, tailored to their skills and interests, and allowing them to learn by doing.</p>   
-    </div>
-    <div id="sidebar">
-        <p>This is the sidebar</p>
-    </div>
-    <div id="footbar" style="display: flex; justify-content: center; align-items: center; height: 15vh;">
-        <p>Copyright ©2022 My Homepage</p>
-    </div>
-</body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Code Challenge</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="ProjectGenerator.html">Project Generator</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="AboutUs.html">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contactUs.html">Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
 
-</html>
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <h1 class="text-center">Code Challenge Home Page</h1>
+                    <p>The app is called "Code Challenge". It is designed to help students improve their coding skills by providing them with coding projects to work on. The app allows students to select a coding language they want to work on, and their proficiency level in that language. Based on their selection, the app generates a list of coding projects that are tailored to their skills and interests. </p>
+                    <p>The app has a user-friendly interface that makes it easy for students to navigate and find the coding projects they want to work on. The students can select from a variety of coding languages such as Python, Java, JavaScript, C++, and more. They can also choose from different proficiency levels such as beginner, intermediate, and advanced.</p>
+                    <p>The coding projects provided by the app are designed to be challenging but also achievable, and they cover a wide range of topics such as web development, game development, data analysis, and more. Each project includes a detailed description, a list of requirements, and step-by-step instructions to help students understand the problem and complete the project.</p>   
+                    <p>The app also includes a built-in code editor that allows students to write and test their code right within the app, and a debugging tool that helps them identify and fix errors in their code.</p>
+                    <p>The app also has a feature that allows students to submit their projects to be reviewed by a mentor or a community of peers, and get feedback and tips on how to improve their code.</p>    
+                    <p>Overall, Code Challenge is an app that helps students improve their coding skills by providing them with challenging and engaging coding projects, tailored to their skills and interests, and allowing them to learn by doing.</p>   
+                </div>
+                <aside class="col-md-4">
+                    <h2>Sidebar</h2>
+                    <p>This is the sidebar</p>
+                </aside>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="text-center">Copyright ©2022 My Homepage</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4
+    
+
