@@ -2,6 +2,11 @@ const API_KEY = "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";
 const { value: languageSelect } = document.getElementById("languageSelect");
 const { value: skillSelect } = document.getElementById("skillSelect");
 const submitBtn = document.getElementById("submitBtn");
+const loading = document.getElementById("loading")
+submitBtn.addEventListener("click", function() {
+  loading.style.display = "block";
+});
+
 const displayProjectIdea = document.getElementById("displayProjectIdea");
 
 async function getProjectIdea(language, skill) {
@@ -63,3 +68,4 @@ submitBtn.addEventListener("click", async function() {
     displayProjectIdea.textContent = "Error: " + error.message;
   }
 });
+
