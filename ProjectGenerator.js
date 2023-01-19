@@ -6,12 +6,14 @@ const API_KEY = "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";
       let cache = {};
 
       async function getProjectIdea(language, skill) {
+        document.getElementById("loading").style.display = "block"; // show loading animation
         const userInput = `Generate a project idea for a ${skill} level ${language} developer.`;
         if (cache[userInput] && cache[userInput].timestamp > Date.now() - 86400000) {
           console.log("Response retrieved from cache");
+          document.getElementById("loading").style.display = "none"; // hide loading animation
           return cache[userInput].data;
         }
-        
+
         console.log("getProjectIdea function called");
         const endpoint = "https://api.openai.com/v1/engines/text-davinci-002/completions";
 
@@ -32,19 +34,25 @@ const API_KEY = "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";
             body: JSON.stringify(body)
         });
           const json = await response.json();
-          if (json.choices && json.choices.length > 0) {
-            cache[userInput] = {
-              data: json.choices[0].text,
-              timestamp: Date.now()
-            };
+          if (json.choices && json.choices[0].text) {
+            cache[userInput] = { data: json.choices[0].text, timestamp: Date.now() };
+            document.getElementById("loading").style.display = "none"; // hide loading animation
             return json.choices[0].text;
           } else {
-            throw new Error('No project ideas found');
+            throw new Error("No text returned from API");
           }
-        } catch (error) {
-          console.log(error);
+        } catch (err) {
+          console.error(err);
+          document.getElementById("loading").style.display = "none"; // hide loading animation
         }
       }
+      submitBtn.addEventListener("click", function() {
+        const selectedLanguage = languageSelect.value;
+        const selectedSkill = skillSelect.value;
+        getProjectIdea(selectedLanguage, selectedSkill).then(projectIdea => {
+          displayProjectIdea.textContent = projectIdea;
+        });
+      });
 
       async function main() {
         submitBtn.addEventListener("click", async function() {
