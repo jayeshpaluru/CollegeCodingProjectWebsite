@@ -2,42 +2,83 @@
 <html>
 
 <head>
-  <title>About Us</title>
-  <style>
-    /* Styles for the page layout */
-    .container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
-    }
-    .card {
-      width: 80%;
-      padding: 2em;
-      margin: 2em;
-      text-align: center;
-    }
-    /* Styles for the text */
-    h1 {
-      font-size: 2em;
-      font-weight: bold;
-    }
-    p {
-      font-size: 1.2em;
-      line-height: 1.5;
-    }
-  </style>
+    <title>Code Challenge - About Us</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 </head>
 
 <body>
-  <div class="container">
-    <div class="card">
-      <h1>About Us</h1>
-      <p>We are a group of passionate individuals who believe in the power of technology to change the world. We strive to create innovative products and services that make a positive impact in people's lives.</p>
-      <p>Our team consists of experts in various fields such as software development, design, and business strategy. We work together to bring our ideas to life and deliver them to our customers.</p>
-      <p>We are always looking for new opportunities to collaborate and make a difference. If you share our vision and would like to work with us, please feel free to contact us.</p>
-    </div>
-  </div>
-</body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Code Challenge</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="home.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="ProjectGenerator.html">Project Generator</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contactUs.html">Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
 
-</html>
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <h1 class="text-center">About Us</h1>
+                    <p>Code Challenge is a team of passionate software developers and educators who are dedicated to helping students improve their coding skills. Our app provides a platform for students to learn by doing, by providing them with challenging and engaging coding projects tailored to their skills and interests.</p>
+                    <p>We believe that the best way to learn coding is by actually coding, and that's why our app is designed to be interactive and hands-on. Our coding projects cover a wide range of topics such as web development, game development, data analysis, and more, and they are designed to be challenging but also achievable.</p>
+                    <p>Our team also includes experienced mentors and educators who are available to provide guidance and feedback to students on their projects. We also have a community of peers who can review and provide feedback on students' projects, helping them to improve their code and build their skills.</p>
+                    <p>Our goal is to help students develop the skills and confidence they need to succeed in the field of software development, and we are committed to providing them with the best possible learning experience.</p>
+                  </div>
+                  <aside class="col-md-4">
+                      <h2>Meet Our Team</h2>
+                      <div class="card">
+                          <img src="img/team1.jpg" class="card-img-top" alt="Team Member 1">
+                          <div class="card-body">
+                              <h4 class="card-title">John Doe</h4>
+                              <p class="card-text">Founder and Lead Developer</p>
+                          </div>
+                      </div>
+                      <div class="card">
+                          <img src="img/team2.jpg" class="card-img-top" alt="Team Member 2">
+                          <div class="card-body">
+                              <h4 class="card-title">Jane Smith</h4>
+                              <p class="card-text">Educational Consultant</p>
+                          </div>
+                      </div>
+                      <div class="card">
+                          <img src="img/team3.jpg" class="card-img-top" alt="Team Member 3">
+                          <div class="card-body">
+                              <h4 class="card-title">Mike Johnson</h4>
+                              <p class="card-text">Lead Mentor</p>
+                          </div>
+                      </div>
+                  </aside>
+              </div>
+          </div>
+      </main>
+      <footer>
+          <div class="container">
+              <div class="row">
+                  <div class="col-md-12">
+                      <p class="text-center">Copyright ©2022 Code Challenge</p>
+                  </div>
+              </div>
+          </div>
+      </footer>
+  </body>
+  </html>
