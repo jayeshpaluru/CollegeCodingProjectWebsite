@@ -100,6 +100,7 @@
           console.log(error);
         }
       }
+
       async function main() {
         submitBtn.addEventListener("click", async function() {
           const language = languageSelect.value;
@@ -109,16 +110,19 @@
             console.log(projectIdeas);
             displayProjectIdea.innerHTML = ""; // Clear the previous content
             const list = document.createElement("ul"); // Create a new unordered list element
-            projectIdeas.split("\n").forEach(idea => { // Split the text into lines and create a new list item for each line
-              if (idea) { // Check if the line is not empty
-                const item = document.createElement("li");
-                item.innerHTML = idea;
-                list.appendChild(item);
+            list.style.listStyleType = "none"; // Remove bullet points
+            list.style.paddingLeft = "20px"; // Indent the bullet points
+            projectIdeas.split("\n").forEach(idea => { // Split the text into lines
+              if (idea !== "") { // Ignore empty lines
+                const item = document.createElement("li"); // Create a new list item
+                item.innerText = idea; // Set the text of the list item
+                list.appendChild(item); // Add the list item to the unordered list
               }
             });
-            displayProjectIdea.appendChild(list);
+            displayProjectIdea.appendChild(list); // Add the unordered list to the displayProjectIdea element
           } catch (error) {
             console.log(error);
+            displayProjectIdea.innerText = "Error: " + error.message;
           }
         });
       }
@@ -127,4 +131,3 @@
     </script>
   </body>
 </html>
-
