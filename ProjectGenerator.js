@@ -9,10 +9,10 @@ async function getProjectIdea(language, skill) {
   console.log("getProjectIdea function called");
   const endpoint = "https://api.openai.com/v1/engines/text-davinci-002/completions";
   const body = {
-    prompt: `Generate a project idea for a ${skill} level ${language} developer.`,
+    prompt: `Generate a project idea and basic steps for a ${skill} level ${language} developer to complete it.`,
     max_tokens: 250,
     stop: "Project completed",
-    temperature: 0.75
+    temperature: 0.95
   }
   try {
     const response = await fetch(endpoint, {
