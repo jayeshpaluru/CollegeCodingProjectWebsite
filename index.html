@@ -28,6 +28,22 @@
           <option value="Python">Python</option>
           <option value="Java">Java</option>
           <option value="C++">C++</option>
+          <option value="C">C</option>
+          <option value="C#">C#</option>
+          <option value="JavaScript">JavaScript</option>
+          <option value="Kotlin">Kotlin</option>
+          <option value="Ruby">Ruby</option>
+          <option value="Swift">Swift</option>
+          <option value="Go">Go</option>
+          <option value="Scala">Scala</option>
+          <option value="Rust">Rust</option>
+          <option value="TypeScript">TypeScript</option>
+          <option value="Racket">Racket</option>
+          <option value="Erlang">Erlang</option>
+          <option value="Elixir">Elixir</option>
+          <option value="Dart">Dart</option>
+          <option value="Assembly">Assembly</option>
+          <option value="Machine Language">Machine Language</option>
         </select>
         <br>
         <label for="skillSelect">Select a skill level:</label>
@@ -96,11 +112,23 @@
           const language = languageSelect.value;
           const skill = skillSelect.value;
           try {
-            const projectIdea = await getProjectIdea(language, skill);
-            console.log(projectIdea);
-            displayProjectIdea.innerHTML = projectIdea;
+            const projectIdeas = await getProjectIdea(language, skill);
+            console.log(projectIdeas);
+            displayProjectIdea.innerHTML = ""; // Clear the previous content
+            const list = document.createElement("ul"); // Create a new unordered list element
+            list.style.listStyleType = "none"; // Remove bullet points
+            list.style.paddingLeft = "20px"; // Indent the bullet points
+            projectIdeas.split("\n").forEach(idea => { // Split the text into lines
+              if (idea !== "") { // Ignore empty lines
+                const item = document.createElement("li"); // Create a new list item
+                item.innerText = idea; // Set the text of the list item
+                list.appendChild(item); // Add the list item to the unordered list
+              }
+            });
+            displayProjectIdea.appendChild(list); // Add the unordered list to the displayProjectIdea element
           } catch (error) {
             console.log(error);
+            displayProjectIdea.innerText = "Error: " + error.message;
           }
         });
       }
@@ -109,3 +137,4 @@
     </script>
   </body>
 </html>
+
