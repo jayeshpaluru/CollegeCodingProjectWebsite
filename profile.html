@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Profile Page</title>
+    <script src="resumeParser.js"></script>
+    <script src="profileConfirmation.js"></script>
+</head>
+<body>
+    <h1>My Profile</h1>
+    <form>
+        <label>Name:</label>
+        <input type="text" id="name-input" placeholder="Enter your name">
+        <br>
+        <label>Email:</label>
+        <input type="email" id="email-input" placeholder="Enter your email">
+        <br>
+        <label>College:</label>
+        <input type="text" id="college-input" placeholder="Enter your college">
+        <br>
+        <label>Classification:</label>
+        <input type="text" id="classification-input" placeholder="Enter your classification">
+        <br>
+        <label>Major:</label>
+        <input type="text" id="major-input" placeholder="Enter your major">
+        <br>
+    </form>
+    <form>
+        <label>Upload your resume:</label>
+        <input type="file" id="resume-input" onchange="parseResume()">
+    </form>
+    <div id="parsed-resume"></div>
+    <div id="upload-confirmation"></div>
+    <button type="submit" onclick="submitProfile()">Submit</button>
+    <div id="submission-confirmation"></div>
+</body>
+</html>
