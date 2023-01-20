@@ -1,3 +1,4 @@
+let personalInfoSubmitted = false;
 const submitProfile = () => {
     // Get the input elements
     const nameInput = document.getElementById('name-input');
