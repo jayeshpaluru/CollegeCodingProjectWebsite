@@ -1,4 +1,4 @@
-const API_KEY = "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";
+const API_KEY = "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";
 const { value: languageSelect } = document.getElementById("languageSelect");
 const { value: skillSelect } = document.getElementById("skillSelect");
 const submitBtn = document.getElementById("submitBtn");
@@ -68,4 +68,3 @@ submitBtn.addEventListener("click", async function() {
     displayProjectIdea.textContent = "Error: " + error.message;
   }
 });
-
