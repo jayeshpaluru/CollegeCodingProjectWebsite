@@ -1,4 +1,4 @@
-const API_KEY = "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";
+const API_KEY = "YOUR-API-KEY";
 const { value: languageSelect } = document.getElementById("languageSelect");
 const { value: skillSelect } = document.getElementById("skillSelect");
 const submitBtn = document.getElementById("submitBtn");
